@@ -4,7 +4,7 @@ from passlib.hash import pbkdf2_sha512
 class Utils(object):
 
     @staticmethod
-    def hash_pasword(password):
+    def hash_password(password):
         """
         Hashed a password using pbkdf2_sha512
         :param password: sha512 password from login or register
@@ -22,3 +22,23 @@ class Utils(object):
         :return: True if password match else False
         """
         return pbkdf2_sha512.verify(password,hashed_password)
+
+    @staticmethod
+    def is_valid_email(email):
+        """
+        check the given email is a valid or not
+        :param email: email of the user
+        :return: Boolean
+        """
+        return False
+
+    @staticmethod
+    def is_valid_password(password):
+        """
+        check the given password have 8 chars
+        :param password: password
+        :return: Trur or False
+        """
+        if len(password) > 8:
+            return True
+        return False

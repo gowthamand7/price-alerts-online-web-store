@@ -1,12 +1,21 @@
 
-class UserNotExistsError(Exception):
-
-    def __init__(self,message):
+class UserError(Exception):
+    def __init__(self,message, code):
         self.message = message
+        self.code = code
 
 
-class IncorrectPasswordError(Exception):
+class UserNotExistsError(UserError):
+    pass
 
-    def __init__(self,message):
-        self.message = message
 
+class IncorrectPasswordError(UserError):
+    pass
+
+
+class UserAlreadyExists(UserError):
+    pass
+
+
+class InvalidInput(UserError):
+    pass
