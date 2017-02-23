@@ -40,6 +40,8 @@ def register():
             if User.register_user(email, password) is True:
                 session['email'] = email
                 return redirect(url_for('.alerts'))
+            else:
+                return "internal server error", 500
         except UserError as u:
             return u.message, u.code
 
@@ -50,7 +52,7 @@ def register():
 
 @users_blueprint.route('/alerts')
 def alerts():
-    return "This alers page"
+    return "This alerts page"
 
 
 @users_blueprint.route('/check_user_alerts/<string:id>')
