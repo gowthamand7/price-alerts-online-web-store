@@ -38,12 +38,13 @@ class Store(object):
 
     @classmethod
     def find_by_url(cls, url):
-        for i in range(0, len(url)+1):
+        rangeR = reversed(range(0, len(url)+1))
+        for i in rangeR:
             store = cls.get_by_url_prefix(url[:i])
             if store is not None:
                 return store
-            else:
-                raise storeErrors.StoreNotFound("No store found for the given url !", 404)
+
+        raise storeErrors.StoreNotFound("No store found for the given url !", 404)
 
     def json(self):
         return {
